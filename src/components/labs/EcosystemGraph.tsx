@@ -175,11 +175,11 @@ export default function EcosystemGraph() {
         fitViewOptions={{ padding: 0.3 }}
         proOptions={{ hideAttribution: true }}
         defaultEdgeOptions={{
-          style: { stroke: 'var(--color-border-active)', strokeWidth: 1.5 },
+          style: { stroke: '#58a6ff40', strokeWidth: 1.5 },
           labelStyle: {
             fontFamily: 'var(--font-mono)',
             fontSize: 10,
-            fill: 'var(--color-text-muted)',
+            fill: 'var(--color-text-secondary)',
           },
           labelBgStyle: { fill: 'var(--color-bg)' },
           labelBgPadding: [4, 2],

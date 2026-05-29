@@ -43,3 +43,7 @@ export function getAllLogEntries(): LogEntry[] {
 export function getLogEntryBySlug(slug: string): LogEntry | undefined {
   return getAllLogEntries().find((e) => e.slug === slug);
 }
+
+export function getLogEntriesByProject(projectId: string): LogEntry[] {
+  return getAllLogEntries().filter((e) => e.project === projectId);
+}

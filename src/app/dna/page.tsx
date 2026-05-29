@@ -1,6 +1,18 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { pillars } from '@/data/methodology';
 import PillarCard from '@/components/dna/PillarCard';
+
+export const metadata: Metadata = {
+  title: 'Engineering DNA',
+  description:
+    'The methodology behind AI Systems Architecture — context engineering, bounded autonomy, and spec-driven development. Built through production failures, not borrowed from a book.',
+  openGraph: {
+    title: 'Engineering DNA | FlexGrafik',
+    description:
+      'Context engineering · Bounded autonomy · Spec-driven development — the three pillars of production AI architecture.',
+  },
+};
 
 export default function DNAPage() {
   return (

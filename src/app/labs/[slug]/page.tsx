@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { projects, getProjectBySlug, getStatusColor, getStatusLabel } from '@/data/ecosystem';
+import { getLogEntriesByProject } from '@/lib/log';
+import HandoffTimeline from '@/components/labs/HandoffTimeline';
 import { Shield } from 'lucide-react';
 
 export async function generateStaticParams() {
@@ -30,6 +32,7 @@ export default async function ProjectDetailPage({
 
   const statusColor = getStatusColor(project.status);
   const statusLabel = getStatusLabel(project.status);
+  const logEntries = getLogEntriesByProject(project.id);
 
   return (
     <article
@@ -316,6 +319,23 @@ export default async function ProjectDetailPage({
         ))}
       </ul>
     </section>
+
+    {logEntries.length > 0 && (
+      <section style={{ marginBottom: 48 }}>
+        <h2
+          className="font-mono"
+          style={{
+            fontSize: '0.75rem',
+            color: 'var(--color-text-muted)',
+            textTransform: 'uppercase',
+            marginBottom: 16,
+          }}
+        >
+          {'// handoff history · '}{logEntries.length}{logEntries.length === 1 ? ' entry' : ' entries'}
+        </h2>
+        <HandoffTimeline entries={logEntries} />
+      </section>
+    )}
 
     <Link
       href="/labs"

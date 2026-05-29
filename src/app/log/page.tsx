@@ -1,5 +1,17 @@
+import type { Metadata } from 'next';
 import { getAllLogEntries } from '@/lib/log';
 import LogList from '@/components/log/LogList';
+
+export const metadata: Metadata = {
+  title: 'The Log',
+  description:
+    'Operating journal — FEAT, ARCH, DEPLOY, and HANDOFF milestones from live AI production systems. Machine-readable RSS and JSON feeds available.',
+  openGraph: {
+    title: 'The Log | FlexGrafik',
+    description:
+      'Live signals from production AI systems: deployments, architecture decisions, feature milestones.',
+  },
+};
 
 export default function LogPage() {
   const entries = getAllLogEntries();

@@ -1,6 +1,18 @@
+import type { Metadata } from 'next';
 import EcosystemGraph from '@/components/labs/EcosystemGraph';
 import ProjectCard from '@/components/labs/ProjectCard';
 import { projects } from '@/data/ecosystem';
+
+export const metadata: Metadata = {
+  title: 'The Ecosystem',
+  description:
+    '8 production projects — one coherent AI system. Agent OS, Flex-VCMS, LLM Gateway, Mission Control and more. Each node a live component.',
+  openGraph: {
+    title: 'The Ecosystem | FlexGrafik',
+    description:
+      '8 projects. One coherent system. Multi-agent orchestration, LLM Gateway, spec-driven pipelines — all production.',
+  },
+};
 
 export default function LabsPage() {
   return (

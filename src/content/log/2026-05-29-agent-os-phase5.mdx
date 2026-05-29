@@ -1,0 +1,28 @@
+---
+title: "Agent OS Phase 5 — DONE"
+date: "2026-05-29"
+project: "agent-os"
+type: "HANDOFF"
+summary: "LangGraph pipeline Planner→Coder→Tester→Reviewer(HITL)→Summarizer fully operational. E2E tests pass."
+---
+
+## What happened
+
+Phase 5 of Agent OS marked the completion of the full LangGraph pipeline.
+
+The pipeline now runs end-to-end:
+- **Planner** — decomposes tasks from todo.json into executable steps
+- **Coder (OpenCode)** — implements code changes autonomously
+- **Tester** — runs pytest suite, reports failures
+- **Reviewer (HITL)** — pauses for human approval before proceeding
+- **Summarizer** — produces handoff doc and updates SESSION-ANCHOR.md
+
+## Evidence
+
+- `e2e_smoke.py` passes on all 5 graph nodes
+- `verify_reject_flow.py` confirms HITL gate fires correctly
+- Mission Control UI (agent-os-ui) shows live task status at :3000
+
+## Next step
+
+Deploy to VPS (manual, Zasada 11). Monitor first 3 production runs.

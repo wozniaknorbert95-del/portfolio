@@ -1,0 +1,35 @@
+---
+title: "Flex-VCMS — Ecosystem Orchestrator Operational"
+date: "2026-05-22"
+project: "flex-vcms"
+type: "HANDOFF"
+summary: "vcms-scan.js generates ecosystem maps, conflict detection working across 8 repos."
+---
+
+## What happened
+
+Flex-VCMS reached operational status as the daily driver for ecosystem management.
+
+The morning ritual is now:
+1. `cd Flex-vcms/flex-vcms`
+2. `node tools/vcms-scan.js`
+3. Read `docs/ecosystem/map.md`
+4. Check `docs/ecosystem/conflicts.md` → expected: Conflicts: 0
+5. Open `WorkFlow/todo.json`
+
+## What vcms-scan.js does
+
+- Reads `repos.yaml` (canonical repo list)
+- Scans each repo for: AGENTS.md presence, brain.md presence, todo.json status
+- Detects: missing files, version conflicts, divergent SSoT references
+- Outputs: `docs/ecosystem/map.md` (human-readable) + `docs/ecosystem/conflicts.md`
+
+## Evidence
+
+- All 8 repos scanned: 0 conflicts on clean state
+- Ecosystem map generated: accurate status for all repos
+- LLM Gateway operational: routes to Anthropic/Google GenAI
+
+## Next step
+
+Extend scan-rules.json to detect package.json dependency drift across repos.

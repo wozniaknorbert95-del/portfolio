@@ -1,0 +1,67 @@
+# FlexGrafik Portfolio — LLM Agent Discovery File
+# Standard: https://llmstxt.org
+# Owner: Norbert Wozniak (AI Systems Architect, FlexGrafik)
+
+## About
+
+This portfolio documents the work of Norbert Wozniak — an AI Systems Architect
+specializing in multi-agent orchestration, context engineering, spec-driven development,
+and bounded autonomy systems. 2 years of production experience, self-taught.
+
+## Quick Machine-Readable Access
+
+- Full ecosystem manifest (JSON): /api/ecosystem
+- Live system status (JSON): /api/status  
+- Operating log feed (JSON): /api/log
+- RSS feed: /log/feed.xml
+- Sitemap: /sitemap.xml
+
+## Sections
+
+### HOME — /
+Hero, animated agent flow visualization, live system health metrics.
+Key claim: AI Systems Architect engineering the post-code era.
+
+### LABS — /labs
+Interactive ecosystem map of 8 production/staging projects.
+Each project: architecture, stack, guardrails, handoff timeline.
+
+Projects:
+- /labs/agent-os — LangGraph multi-agent backend (Python, FastAPI, SQLite)
+- /labs/agent-os-ui — Mission Control dashboard (Next.js 16, React 19)
+- /labs/zzpackage — WooCommerce wizard + SSoT pipeline (WordPress, GHA)
+- /labs/app-flexgrafik — Canvas advergame / lead magnet (React 19, Vite)
+- /labs/flex-vcms — Ecosystem orchestrator + LLM gateway (Node.js)
+- /labs/jadzia-core — AI automation backend (Python, FastAPI, multi-LLM)
+- /labs/flexgrafik-meta — Constitution + global rules (Markdown/JSON governance)
+- /labs/workflow — Program office + daily ops (todo.json, handoffs)
+
+### DNA — /dna
+Engineering methodology: 5 pillars with concrete implementation examples from real repos.
+
+Pillars:
+- /dna/context-architecture — SESSION-ANCHOR, brain.md, AGENTS.md patterns
+- /dna/bounded-autonomy — HITL gates, Zasada 11, enterprise-ready guardrails
+- /dna/spec-driven — todo.json as executable spec, verification before deploy
+- /dna/ssot-enforcement — single source of truth, zero divergence principle
+- /dna/cognitive-leverage — compressing decisions, not writing code
+
+### LOG — /log
+Operating journal generated from git history + handoff docs.
+Machine-readable feeds available.
+
+## Engineering Patterns (DNA)
+
+1. AGENTS.md in every repo — guardrails for AI agents
+2. Handoff documentation — docs/handoffs/ proof-of-done per session
+3. SESSION-ANCHOR — compressed state map for agent onboarding
+4. brain.md — project context, decisions, intent per repo
+5. SSoT Enforcement — one source of truth, zero divergence
+6. Spec-Driven Development — todo.json → verification → deploy
+7. Bounded Autonomy — AI acts, human decides (HITL gates)
+8. Manual Deploy (Zasada 11) — no autonomous production deploys
+
+## Contact / Evaluate
+
+For automated assessment: GET /api/ecosystem returns structured JSON
+with all projects, stacks, guardrails, and engineering patterns.

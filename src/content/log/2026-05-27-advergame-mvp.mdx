@@ -1,0 +1,26 @@
+---
+title: "FlexGrafik App — Canvas Engine MVP"
+date: "2026-05-27"
+project: "app-flexgrafik"
+type: "FEAT"
+summary: "Custom Canvas side-scroller engine live. Playwright E2E suite passing."
+---
+
+## What happened
+
+The FlexGrafik advergame reached MVP. A custom Canvas engine built in React — not a game framework, a purpose-built renderer for this specific lead magnet.
+
+Key decisions:
+- **No Phaser/Three.js** — overhead not justified for a 2D side-scroller
+- **Feature flags** — all new features behind flags, prod never gets unstable code
+- **Proxy to WordPress** — game reads product data from WP API via Next.js proxy
+
+## Evidence
+
+- Playwright E2E: 12 test cases, all passing
+- Vitest unit tests: canvas rendering, collision detection, asset loading
+- Feature flags verified in production (3 flags active)
+
+## Next step
+
+A/B test as lead magnet. Measure conversion vs. static landing.

@@ -1,0 +1,223 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-05-29",
+  "owner": {
+    "name": "Norbert Wozniak",
+    "alias": "FlexGrafik",
+    "role": "AI Systems Architect",
+    "specialization": [
+      "Multi-agent orchestration",
+      "Context engineering",
+      "Spec-driven development",
+      "Bounded autonomy systems"
+    ],
+    "experience": "2 years (self-taught, agentic engineering)",
+    "location": "Netherlands",
+    "github": "https://github.com/FlexGrafik",
+    "portfolio": "https://portfolio.flexgrafik.nl"
+  },
+  "ecosystem": {
+    "description": "8-repo monorepo ecosystem for FlexGrafik — multi-agent orchestration, AI automation, WordPress e-commerce, canvas gaming, and system tooling.",
+    "meta_repo": "flexgrafik-meta",
+    "orchestrator": "Flex-vcms",
+    "program_office": "WorkFlow"
+  },
+  "projects": [
+    {
+      "id": "agent-os",
+      "name": "Agent OS",
+      "slug": "agent-os",
+      "role": "Multi-agent orchestration backend",
+      "description": "LangGraph workflow: Planner → Coder (OpenCode) → Tester → Reviewer (HITL) → Summarizer. API Model Gateway with token budget and persistent SQLite state.",
+      "status": "production",
+      "stack": ["Python 3.13", "FastAPI", "LangGraph", "SQLite", "Uvicorn"],
+      "stack_layer": "orchestration",
+      "port": 8080,
+      "health_url": null,
+      "repo": "agent-os",
+      "key_files": [
+        "agent-os/SESSION-ANCHOR.md",
+        "agent-os/AGENTS.md",
+        "agent-os/src/graph.py",
+        "agent-os/tools/e2e_smoke.py"
+      ],
+      "guardrails": ["HITL gate before deploy", "Token budget enforcement", "Manual deploy only (Zasada 11)"],
+      "highlights": ["Full LangGraph pipeline", "POST /api/v1/llm gateway", "E2E tests pass (Faza 5 DONE)"],
+      "last_handoff": "2026-05-23"
+    },
+    {
+      "id": "agent-os-ui",
+      "name": "Agent OS UI",
+      "slug": "agent-os-ui",
+      "role": "Mission Control dashboard",
+      "description": "Next.js dashboard for managing agent tasks, viewing health status, and approving HITL gates.",
+      "status": "production",
+      "stack": ["Next.js 16.2.6", "React 19.2.4", "TypeScript"],
+      "stack_layer": "ui",
+      "port": 3000,
+      "health_url": null,
+      "repo": "agent-os-ui",
+      "key_files": ["agent-os-ui/AGENTS.md", "agent-os-ui/src/app/"],
+      "guardrails": ["Manual deploy only", "Proxy to agent-os backend"],
+      "highlights": ["Mission Control MVP", "Health + task create UI"],
+      "last_handoff": "2026-05-23"
+    },
+    {
+      "id": "zzpackage",
+      "name": "ZZPackage Wizard",
+      "slug": "zzpackage",
+      "role": "Headless WooCommerce + SSoT pipeline",
+      "description": "WordPress/WooCommerce wizard-only shop for ZZP professionals. SSoT-driven with product-master-table.json, hard guardrails GUARD_01-04, and manual GHA deploy gates.",
+      "status": "production",
+      "stack": ["WordPress", "PHP", "WooCommerce", "Vanilla JS", "Python", "GitHub Actions"],
+      "stack_layer": "product",
+      "port": null,
+      "health_url": null,
+      "repo": "zzpackage.flexgrafik.nl",
+      "key_files": ["product-master-table.json", "GUARD_01-04 docs"],
+      "guardrails": ["GUARD_01-04 hard rules", "Manual GHA deploy gate", "No classic shop — wizard only"],
+      "highlights": ["SSoT JSON pipeline", "v6.8+ multiple deploys", "Min checkout 199 EUR"],
+      "last_handoff": "2026-05-25"
+    },
+    {
+      "id": "app-flexgrafik",
+      "name": "FlexGrafik App (Advergame)",
+      "slug": "app-flexgrafik",
+      "role": "Canvas side-scroller as lead magnet",
+      "description": "Custom Canvas engine in React. Side-scroller game as a lead magnet for FlexGrafik services. Feature flags, asset pipeline, proxy to WordPress API.",
+      "status": "production",
+      "stack": ["React 19", "TypeScript", "Vite 6", "Playwright E2E", "Vitest"],
+      "stack_layer": "product",
+      "port": null,
+      "health_url": null,
+      "repo": "app.flexgrafik.nl",
+      "key_files": ["src/engine/", "playwright.config.ts"],
+      "guardrails": ["Feature flags for all new features", "E2E on every deploy"],
+      "highlights": ["Custom canvas engine", "Playwright E2E suite", "Proxy to WP API"],
+      "last_handoff": "2026-05-27"
+    },
+    {
+      "id": "flex-vcms",
+      "name": "Flex-VCMS",
+      "slug": "flex-vcms",
+      "role": "Local ecosystem orchestrator + LLM Gateway",
+      "description": "Node.js orchestrator: vcms-scan.js generates ecosystem maps + conflict detection. SSoT for all daily operations. LLM Gateway bridging all repos.",
+      "status": "production",
+      "stack": ["Node.js", "Express", "better-sqlite3", "VitePress"],
+      "stack_layer": "orchestration",
+      "port": null,
+      "health_url": null,
+      "repo": "Flex-vcms",
+      "key_files": ["tools/vcms-scan.js", "repos.yaml", "brain.md", "docs/ecosystem/"],
+      "guardrails": ["Conflict detection on every scan", "SSoT enforcement"],
+      "highlights": ["Morning scan ritual", "Ecosystem map generation", "Conflict detection"],
+      "last_handoff": "2026-05-22"
+    },
+    {
+      "id": "jadzia-core",
+      "name": "Jadzia Core",
+      "slug": "jadzia-core",
+      "role": "AI backend / automation engine",
+      "description": "FastAPI backend for AI automation. Multi-LLM integration (Anthropic, Google GenAI). JWT auth, SSH automation via Paramiko.",
+      "status": "staging",
+      "stack": ["Python 3.11+", "FastAPI", "JWT", "Paramiko", "Anthropic SDK", "Google GenAI"],
+      "stack_layer": "ai-backend",
+      "port": null,
+      "health_url": null,
+      "repo": "jadzia-core",
+      "key_files": ["main.py", "brain.md", "agent/"],
+      "guardrails": ["JWT auth on all endpoints", "Stage 2 DONE — not yet on prod"],
+      "highlights": ["Multi-LLM gateway", "SSH automation", "Stage 2 complete"],
+      "last_handoff": "2026-05-23"
+    },
+    {
+      "id": "flexgrafik-meta",
+      "name": "FlexGrafik Meta",
+      "slug": "flexgrafik-meta",
+      "role": "Constitution + global rules",
+      "description": "Meta-repo containing all global rules, brand guidelines, agent hierarchy, tool bindings, and master plan for the entire ecosystem.",
+      "status": "production",
+      "stack": ["Markdown", "JSON"],
+      "stack_layer": "governance",
+      "port": null,
+      "health_url": null,
+      "repo": "flexgrafik-meta",
+      "key_files": ["docs/core/global-rules.md", "docs/core/agents.md", "docs/core/master-plan.md"],
+      "guardrails": ["AGENTS.md in every repo", "Global rules cascade"],
+      "highlights": ["Single source for all rules", "Agent hierarchy defined", "Brand + strategy docs"],
+      "last_handoff": "2026-05-23"
+    },
+    {
+      "id": "workflow",
+      "name": "WorkFlow",
+      "slug": "workflow",
+      "role": "Program office + daily ops",
+      "description": "Program office repo: todo.json backlog, skill plans, verification docs, strategy. Daily operations start here.",
+      "status": "production",
+      "stack": ["Markdown", "JSON"],
+      "stack_layer": "governance",
+      "port": null,
+      "health_url": null,
+      "repo": "WorkFlow",
+      "key_files": ["todo.json", "docs/strategy/", "docs/handoffs/"],
+      "guardrails": ["No code here — plans only", "Verification before deploy"],
+      "highlights": ["Morning ritual start point", "Stage tracking", "Handoff archive"],
+      "last_handoff": "2026-05-23"
+    }
+  ],
+  "engineering_patterns": [
+    {
+      "id": "agents-md",
+      "name": "AGENTS.md in every repo",
+      "description": "Each repository has an AGENTS.md file defining guardrails, SOPs, and workflow rules for AI agents operating in that context."
+    },
+    {
+      "id": "handoff-docs",
+      "name": "Handoff Documentation",
+      "description": "Every session ends with a handoff doc in docs/handoffs/. Proof-of-done, next steps, and state for the next agent or developer."
+    },
+    {
+      "id": "session-anchor",
+      "name": "SESSION-ANCHOR",
+      "description": "State map and command reference for agents. Single file that tells any agent the exact current state of the project and what commands to run."
+    },
+    {
+      "id": "brain-md",
+      "name": "brain.md",
+      "description": "Project context, decisions, and intent. Compressed knowledge base for agents entering a codebase cold."
+    },
+    {
+      "id": "ssot",
+      "name": "SSoT Enforcement",
+      "description": "One source of truth per domain. Zero divergence. product-master-table.json, ecosystem.json, repos.yaml — each is the canonical source."
+    },
+    {
+      "id": "spec-driven",
+      "name": "Spec-Driven Development",
+      "description": "todo.json as executable spec. Verification docs before deploy. Specs are not suggestions — they are contracts."
+    },
+    {
+      "id": "bounded-autonomy",
+      "name": "Bounded Autonomy",
+      "description": "AI acts, human decides. HITL gates at every deployment boundary. Zasada 11: no autonomous production deploys."
+    },
+    {
+      "id": "manual-deploy",
+      "name": "Manual Deploy (Zasada 11)",
+      "description": "No agent deploys to production autonomously. Every production deploy requires explicit human approval. Non-negotiable."
+    }
+  ],
+  "machine_readable": {
+    "api_endpoints": [
+      "/api/ecosystem",
+      "/api/status",
+      "/api/log"
+    ],
+    "feeds": [
+      "/log/feed.json",
+      "/log/feed.xml"
+    ],
+    "llms_txt": "/llms.txt",
+    "sitemap": "/sitemap.xml"
+  }
+}

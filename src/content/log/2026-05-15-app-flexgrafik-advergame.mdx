@@ -1,0 +1,27 @@
+---
+title: "FlexGrafik App — Advergame Engine Architecture"
+date: "2026-05-15"
+project: "app-flexgrafik"
+type: "FEAT"
+summary: "Canvas engine architecture finalized. Feature flag system, WP proxy, collision detection stable."
+---
+
+## What happened
+
+The advergame engine architecture locked. This entry documents the decisions made before going into final E2E testing.
+
+Core architecture decisions:
+- **No game framework** — pure Canvas API + React state, ~4KB runtime overhead vs. Phaser's 1MB
+- **Deterministic game loop** — `requestAnimationFrame` with fixed timestep for consistent physics
+- **Feature flags via env** — `NEXT_PUBLIC_FF_*` flags gate every experimental mechanic
+- **WordPress proxy** — `/api/products` route proxies WP REST API, game stays decoupled from CMS
+
+## Evidence
+
+- Engine runs at locked 60fps on mid-range mobile (tested on Android 12)
+- Feature flag isolation confirmed: disabling `FF_POWER_UPS` removes mechanic with 0 side effects
+- WP proxy handles authentication, caching, error fallback transparently
+
+## Next step
+
+Final Playwright E2E suite, then staging deploy for client review.

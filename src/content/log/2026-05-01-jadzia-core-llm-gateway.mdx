@@ -1,0 +1,27 @@
+---
+title: "jadzia-core — LLM Gateway Operational"
+date: "2026-05-01"
+project: "jadzia-core"
+type: "FEAT"
+summary: "Unified LLM gateway routing Anthropic + Google GenAI. Provider switching via env flag."
+---
+
+## What happened
+
+jadzia-core got its first major architectural decision: a single gateway instead of per-feature API calls scattered across repos.
+
+Design choices:
+- **Single entry point** — `lib/llm-gateway.ts` handles all outbound LLM calls
+- **Provider abstraction** — Anthropic and Google GenAI behind a common interface
+- **Env-driven switching** — `LLM_PROVIDER=anthropic|google` toggles without code change
+- **Retry + fallback** — exponential backoff, automatic fallback to secondary provider
+
+## Evidence
+
+- All existing Anthropic calls migrated to gateway: 0 direct SDK imports outside `lib/`
+- Google GenAI integration tested: Gemini Pro responses validated against Anthropic baseline
+- Provider switch verified end-to-end in staging with `LLM_PROVIDER=google`
+
+## Next step
+
+Add streaming support and token-usage telemetry per provider.

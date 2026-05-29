@@ -1,0 +1,26 @@
+---
+title: "zzpackage — SSoT Guard Implemented"
+date: "2026-05-05"
+project: "zzpackage"
+type: "ARCH"
+summary: "Pre-commit hook enforces single source of truth. Blocks commits that diverge from canonical versions."
+---
+
+## What happened
+
+SSoT drift was the silent killer in the ecosystem. zzpackage now ships a guard that enforces canonical version references before any commit lands.
+
+Architecture:
+- **`ssot-guard.js`** — reads `zzpackage/versions.json` as canonical truth
+- **Pre-commit hook** — runs on every affected repo via `husky` + `lint-staged`
+- **Conflict report** — outputs which file, which package, what version mismatch
+
+## Evidence
+
+- Tested across 6 repos: guard correctly blocked 3 synthetic drift scenarios
+- `npm run ssot:check` exits 0 on clean state in all repos
+- Pre-commit hook integrated in `agent-os`, `jadzia-core`, `flex-vcms`
+
+## Next step
+
+Extend guard to check AGENTS.md `Stack:` section against `package.json` for full consistency.

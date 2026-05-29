@@ -1,0 +1,28 @@
+---
+title: "agent-os-ui — Mission Control Launch"
+date: "2026-05-12"
+project: "agent-os-ui"
+type: "DEPLOY"
+summary: "Mission Control UI live at :3000. Real-time task status, HITL approval interface, pipeline graph."
+---
+
+## What happened
+
+The Agent OS pipeline needed a human-readable control surface. agent-os-ui is that surface — a Next.js dashboard that turns the LangGraph state machine into something you can actually supervise.
+
+Shipped in v1:
+- **Pipeline graph** — live visualization of Planner→Coder→Tester→Reviewer→Summarizer state
+- **HITL approval panel** — one-click approve/reject for Reviewer gate
+- **Task feed** — real-time log of agent actions, streamed via SSE
+- **Session anchors** — each completed session links to its handoff doc
+
+## Evidence
+
+- Dashboard live at `localhost:3000` on dev VPS
+- HITL gate tested: UI correctly blocks pipeline until approval
+- SSE stream stable over 20-minute continuous run
+- First 3 production pipeline runs supervised via UI
+
+## Next step
+
+Add failure replay: rewind pipeline to any node state and re-execute from that checkpoint.

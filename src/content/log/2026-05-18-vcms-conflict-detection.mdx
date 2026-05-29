@@ -1,0 +1,27 @@
+---
+title: "Flex-VCMS — Conflict Detection Engine"
+date: "2026-05-18"
+project: "flex-vcms"
+type: "FEAT"
+summary: "vcms-scan.js detects dependency drift, missing AGENTS.md, divergent SSoT refs across 8 repos."
+---
+
+## What happened
+
+Flex-VCMS graduated from a scan tool to a full conflict detection engine. The difference: it now not only reports what it sees, but classifies severity and suggests resolution.
+
+Detection rules added:
+- **Dependency drift** — same package, different versions across repos → `CONFLICT: version`
+- **Missing AGENTS.md** — any repo without agent configuration → `WARN: no-agents`
+- **SSoT divergence** — `zzpackage` version references that don't match canonical → `CONFLICT: ssot`
+- **Stale handoffs** — handoff docs older than 7 days without a follow-up entry → `WARN: stale`
+
+## Evidence
+
+- All 8 repos scanned in under 3 seconds on cold start
+- `docs/ecosystem/conflicts.md` generated with severity levels and suggested fixes
+- Zero false positives on known-clean state across 10 consecutive runs
+
+## Next step
+
+Wire conflict report into WorkFlow: auto-create tasks for unresolved `CONFLICT` severity items.

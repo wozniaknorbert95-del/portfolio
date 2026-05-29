@@ -1,0 +1,27 @@
+---
+title: "WorkFlow — Program Office Architecture"
+date: "2026-05-08"
+project: "workflow"
+type: "ARCH"
+summary: "WorkFlow promoted from todo tracker to cross-repo program office. todo.json as canonical task bus."
+---
+
+## What happened
+
+WorkFlow outgrew its original scope. What started as a per-repo todo tracker is now the coordination layer across the entire ecosystem.
+
+Key decisions:
+- **`todo.json` as task bus** — all agents read/write task state through a single schema
+- **Cross-repo scope fields** — tasks now carry `repo`, `blocked_by`, and `priority` metadata
+- **Agent-readable format** — schema designed so LLM agents can parse and act without prompt engineering
+- **vcms-scan integration** — Flex-VCMS reads WorkFlow state for conflict detection
+
+## Evidence
+
+- Agent OS Planner reads `WorkFlow/todo.json` as input on every cycle
+- `blocked_by` chains resolved correctly across `jadzia-core` and `agent-os` task trees
+- 0 duplicate task definitions after schema enforcement
+
+## Next step
+
+Add `expires_at` field to auto-expire stale tasks older than 14 days.

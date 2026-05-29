@@ -31,8 +31,10 @@ export default function LogPage() {
 
       <footer className="mt-16 pt-6 border-t" style={{ borderColor: 'var(--color-border)' }}>
         <p className="font-mono text-xs" style={{ color: 'var(--color-text-muted)' }}>
-          Subscribe: <span style={{ color: 'var(--color-accent)' }}>RSS</span> ·{' '}
-          <span style={{ color: 'var(--color-accent)' }}>JSON</span>
+          Subscribe:{' '}
+          <a href="/log/feed.xml" style={{ color: 'var(--color-accent)' }}>RSS</a>
+          {' · '}
+          <a href="/log/feed.json" style={{ color: 'var(--color-accent)' }}>JSON</a>
         </p>
       </footer>
     </div>

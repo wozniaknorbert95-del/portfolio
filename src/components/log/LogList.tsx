@@ -45,7 +45,7 @@ export default function LogList({ entries: all }: { entries: LogEntry[] }) {
                   : 'var(--color-text-secondary)',
             }}
           >
-            {type === 'ALL' ? type : type}
+            {type}
             <span className="ml-1" style={{ opacity: 0.6 }}>{count}</span>
           </button>
         ))}

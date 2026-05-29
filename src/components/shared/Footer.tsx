@@ -8,6 +8,8 @@ const machineLinks = [
   { href: '/llms.txt', label: 'llms.txt' },
 ];
 
+const LINKEDIN_URL = 'https://www.linkedin.com/in/norbert-wozniak-172b76367/';
+
 export default function Footer() {
   return (
     <footer
@@ -37,12 +39,30 @@ export default function Footer() {
         ))}
       </div>
 
-      <span
-        className="text-xs font-mono hidden md:inline"
-        style={{ color: 'var(--color-accent)' }}
-      >
-        AI Systems Architect
-      </span>
+      <div className="hidden md:flex items-center gap-4">
+        <a
+          href="https://github.com/FlexGrafik"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-mono transition-colors"
+          style={{ color: 'var(--color-text-muted)', textDecoration: 'none' }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-text-muted)')}
+        >
+          GitHub
+        </a>
+        <a
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-mono transition-colors"
+          style={{ color: 'var(--color-accent)', textDecoration: 'none' }}
+          onMouseEnter={(e) => (e.currentTarget.style.filter = 'brightness(1.2)')}
+          onMouseLeave={(e) => (e.currentTarget.style.filter = 'brightness(1)')}
+        >
+          LinkedIn →
+        </a>
+      </div>
     </footer>
   );
 }

@@ -1,7 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
-import { useReducedMotion, motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { BrainCircuit, ShieldCheck, FileCode, type LucideIcon } from 'lucide-react';
 
@@ -35,34 +33,16 @@ const pillars: Pillar[] = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.15, duration: 0.5, ease: 'easeOut' as const },
-  }),
-};
-
 export default function ThreePillars() {
-  const prefersReducedMotion = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-
   return (
     <section
-      className="mx-auto"
       style={{
         maxWidth: 1100,
+        margin: '0 auto',
         padding: 'var(--section-padding) 24px',
       }}
     >
-      <motion.div
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.4 }}
-        className="text-center mb-12"
-      >
+      <div className="text-center" style={{ marginBottom: '3rem' }}>
         <h2
           className="font-bold"
           style={{
@@ -83,7 +63,7 @@ export default function ThreePillars() {
         >
           Not a methodology borrowed from a book. Built through production failures.
         </p>
-      </motion.div>
+      </div>
 
       <div
         className="grid"
@@ -92,19 +72,16 @@ export default function ThreePillars() {
           gap: 24,
         }}
       >
-        {pillars.map((pillar, i) => (
-          <motion.div
+        {pillars.map((pillar) => (
+          <div
             key={pillar.title}
-            custom={i}
-            initial={prefersReducedMotion ? false : 'hidden'}
-            animate={isInView ? 'visible' : 'hidden'}
-            variants={cardVariants}
-            className="flex flex-col transition-all"
+            className="flex flex-col"
             style={{
               background: 'var(--color-bg-surface)',
               border: '1px solid var(--color-border)',
               borderRadius: 'var(--radius-lg)',
               padding: 32,
+              transition: 'border-color 250ms ease, transform 250ms ease',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = 'var(--color-accent)';
@@ -115,8 +92,8 @@ export default function ThreePillars() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            <div style={{ marginBottom: 16 }}>
-              <pillar.icon size={32} style={{ color: 'var(--color-accent)' }} />
+            <div style={{ marginBottom: 16, color: 'var(--color-accent)' }}>
+              <pillar.icon size={32} />
             </div>
 
             <div className="flex items-center gap-2" style={{ marginBottom: 4 }}>
@@ -159,18 +136,17 @@ export default function ThreePillars() {
 
             <Link
               href={pillar.href}
-              className="font-medium no-underline transition-all inline-block"
+              className="font-medium inline-block"
               style={{
                 color: 'var(--color-accent)',
                 fontSize: '0.875rem',
                 marginTop: 16,
+                textDecoration: 'none',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-              onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
             >
               Explore &rarr;
             </Link>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

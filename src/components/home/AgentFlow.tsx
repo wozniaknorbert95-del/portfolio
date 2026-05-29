@@ -45,7 +45,7 @@ const arrowVariants = {
 export default function AgentFlow() {
   const prefersReducedMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '0px' });
 
   return (
     <section

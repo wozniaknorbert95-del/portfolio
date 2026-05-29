@@ -60,7 +60,8 @@ function AnimatedMetric({
     return () => clearTimeout(timeout);
   }, [isInView, isCountUp, countTarget, delay, hasAnimated, prefersReducedMotion]);
 
-  const displayValue = isCountUp ? String(count) : value;
+  const shouldCountUp = isCountUp && typeof countTarget === 'number';
+  const displayValue = shouldCountUp ? String(count) : value;
 
   return (
     <div className="flex flex-col items-center shrink-0">
@@ -102,7 +103,7 @@ function AnimatedMetric({
 export default function MetricsStrip() {
   const prefersReducedMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '0px', amount: 0.1 });
 
   const metrics: MetricProps[] = [
     {

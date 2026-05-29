@@ -1,23 +1,14 @@
 'use client';
 
-import { useRef } from 'react';
-import { useReducedMotion, motion, useInView } from 'framer-motion';
-import {
-  BrainCircuit,
-  Code2,
-  TestTube,
-  UserCheck,
-  FileText,
-  type LucideIcon,
-} from 'lucide-react';
+import { BrainCircuit, Code2, TestTube, UserCheck, FileText, type LucideIcon } from 'lucide-react';
 
-interface Node {
+interface FlowNode {
   icon: LucideIcon;
   label: string;
   hitl?: boolean;
 }
 
-const nodes: Node[] = [
+const nodes: FlowNode[] = [
   { icon: BrainCircuit, label: 'Planner' },
   { icon: Code2, label: 'Coder' },
   { icon: TestTube, label: 'Tester' },
@@ -25,31 +16,9 @@ const nodes: Node[] = [
   { icon: FileText, label: 'Summarizer' },
 ];
 
-const nodeVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.2 + i * 0.1, duration: 0.4, ease: 'easeOut' as const },
-  }),
-};
-
-const arrowVariants = {
-  hidden: { opacity: 0 },
-  visible: (i: number) => ({
-    opacity: 0.6,
-    transition: { delay: 0.5 + i * 0.1, duration: 0.3, ease: 'easeOut' as const },
-  }),
-};
-
 export default function AgentFlow() {
-  const prefersReducedMotion = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '0px' });
-
   return (
     <section
-      ref={ref}
       className="mx-auto flex flex-col items-center"
       style={{
         maxWidth: 900,
@@ -57,15 +26,12 @@ export default function AgentFlow() {
         borderTop: '1px solid var(--color-border)',
       }}
     >
-      <motion.p
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.4 }}
+      <p
         className="font-mono text-xs mb-8"
         style={{ color: 'var(--color-text-muted)' }}
       >
         {'// agent-os pipeline · production'}
-      </motion.p>
+      </p>
 
       <div
         className="flex items-center justify-center"
@@ -74,11 +40,7 @@ export default function AgentFlow() {
         {nodes.map((node, i) => (
           <div key={node.label} className="flex items-center shrink-0">
             {/* Node */}
-            <motion.div
-              custom={i}
-              initial={prefersReducedMotion ? false : 'hidden'}
-              animate={isInView ? 'visible' : 'hidden'}
-              variants={nodeVariants}
+            <div
               className="flex flex-col items-center"
               style={{ gap: 8, width: 120 }}
             >
@@ -103,9 +65,10 @@ export default function AgentFlow() {
                   height: 56,
                   border: '1px solid var(--color-border-active)',
                   background: 'var(--color-bg-elevated)',
+                  color: 'var(--color-accent)',
                 }}
               >
-                <node.icon size={22} style={{ color: 'var(--color-accent)' }} />
+                <node.icon size={22} />
               </div>
               <span
                 className="font-mono text-center"
@@ -118,25 +81,18 @@ export default function AgentFlow() {
               >
                 {node.label}
               </span>
-            </motion.div>
+            </div>
 
-            {/* Arrow (between nodes) */}
+            {/* Arrow between nodes */}
             {i < nodes.length - 1 && (
-              <motion.svg
-                custom={i}
-                initial={prefersReducedMotion ? false : 'hidden'}
-                animate={isInView ? 'visible' : 'hidden'}
-                variants={arrowVariants}
+              <svg
                 width={48}
                 height={24}
                 className="shrink-0"
                 style={{ margin: '0 4px' }}
               >
                 <line
-                  x1={0}
-                  y1={12}
-                  x2={40}
-                  y2={12}
+                  x1={0} y1={12} x2={40} y2={12}
                   stroke="var(--color-accent)"
                   strokeWidth={1.5}
                   strokeDasharray="5 4"
@@ -148,26 +104,16 @@ export default function AgentFlow() {
                   fill="var(--color-accent)"
                   opacity={0.6}
                 />
-              </motion.svg>
+              </svg>
             )}
           </div>
         ))}
       </div>
 
       <style>{`
-        @keyframes agent-flow-dash {
-          to {
-            stroke-dashoffset: -18;
-          }
-        }
-        .agent-flow-arrow {
-          animation: agent-flow-dash 1.5s linear infinite;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .agent-flow-arrow {
-            animation: none;
-          }
-        }
+        @keyframes agent-flow-dash { to { stroke-dashoffset: -18; } }
+        .agent-flow-arrow { animation: agent-flow-dash 1.5s linear infinite; }
+        @media (prefers-reduced-motion: reduce) { .agent-flow-arrow { animation: none; } }
       `}</style>
     </section>
   );

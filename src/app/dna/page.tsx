@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { pillars } from '@/data/methodology';
 import PillarCard from '@/components/dna/PillarCard';
+import MethodologyGraph from '@/components/dna/MethodologyGraph';
 
 export const metadata: Metadata = {
   title: 'Engineering DNA',
@@ -35,10 +36,23 @@ export default function DNAPage() {
         </p>
       </header>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
         {pillars.map((pillar) => (
           <PillarCard key={pillar.id} pillar={pillar} />
         ))}
+      </section>
+
+      <section className="mb-24">
+        <p className="font-mono text-xs mb-3" style={{ color: 'var(--color-text-muted)' }}>
+          {'// methodology graph · pillars → implementations'}
+        </p>
+        <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
+          How It Works in Practice
+        </h2>
+        <p className="text-sm mb-8" style={{ color: 'var(--color-text-secondary)', maxWidth: 520 }}>
+          Each pillar produces concrete artifacts — click any node to explore.
+        </p>
+        <MethodologyGraph />
       </section>
 
       <section>

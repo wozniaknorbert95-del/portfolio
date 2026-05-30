@@ -1,45 +1,60 @@
-# Next Session Prompt — 2026-05-30
+# Next Session Prompt — 2026-05-30 (post-strategy)
 
 ## Stan
 
-- **Branch**: `master` clean, zpushowany na origin (2 commity dzisiaj)
-- **Build**: 45/45 pages, TypeScript clean, Vercel live
-- **Feature-complete**: KF 1,3,4,5 ✅ | KF-2 🔴 blocked (VPS) | LinkedIn URL 🟡 blocked
-- **CI/CD**: Vercel auto-deploy on push, GitHub Actions CI pass
+- **Branch**: `master` clean, 3 commity dzisiaj (SEO JSON-LD + Polish + Log entry)
+- **Build**: 47/47 pages, TypeScript clean, Vercel live
+- **KF**: KF 1,3,4,5 ✅ | KF-2 🔴 blocked (VPS) | LinkedIn 🟡 blocked
+- **Strategia B2B**: ZATWIERDZONA. Plik: `docs/strategy/B2B-SMB-AUTOMATION-STRATEGY-EN.md`
 
-## Zaległości szybkie (1 minuta każda gdy odblokowane)
+## Decyzje strategiczne (zamrożone do odwołania)
 
-1. **LinkedIn custom URL** — jeśli ustawiony: `Hero.tsx:127` + `Footer.tsx:55` zmienić URL
-2. **Więcej log entries** — dodać MDX do `src/content/log/` → timeline automatycznie zyska entries
+1. **One product**: AI Lead Qualification ("Inbox Killer") — €497 setup + €147/mo, 48h delivery
+2. **14-day freeze**: Websites, e-commerce, complex builds. Tylko Inbox Killer.
+3. **Portfolio sacred**: `portfolio.flexgrafik.nl` zero zmian pod ZZP/SMB.
+4. **Language**: English dla wszystkich B2B assets.
+5. **Domain**: `services.flexgrafik.nl` (subdomain, osobny asset).
+6. **Track 3 protection**: Track 4 nie zjada godzin Track 3.
 
-## Opcje następnej sesji
+## Priorytet #1: 72-Hour Validation Test
 
-### A) Polish / UX micro
-- Hover states na `PillarCard` (teraz brak interakcji)
-- Loading state / skeleton dla EcosystemGraph / MethodologyGraph
-- OG image per `/dna/[pillar]` (teraz tylko ogólna)
-- Mobile: MethodologyGraph overflow na małych ekranach
+**NIE PISZ KODU. Nie buduj landing page. Czysta walidacja.**
 
-### B) Content
-- 2-3 nowe log entries (projekty z 0 entries: `flexgrafik-meta`, może `agent-os-ui` więcej)
-- Więcej handoff docs w `docs/handoffs/` — portfolio jako living dokument
+1. User pisze ONE LinkedIn post (ręcznie) i DM do 5 friendly business owners
+2. Treść: *"Your inbox is 80% noise. I built an AI system that clears the clutter in 48 hours and surfaces only the leads that matter. First 5 demos are free. DM me 'INBOX' and I'll show you your own data."*
+3. Czeka 72h, liczy demo requesty
+4. **≥3 demos** → Phase 2 (budowa template + landing page)
+5. **<3 demos** → Pivot messaging lub KFA-only
 
-### C) Infrastructure
-- KF-2: Live Health Strip — wymaga publicznych health endpoints z VPS
-  - `agent-os` :8080/health, `agent-os-ui` :3000/health — czy są dostępne z internetu?
-  - Jeśli tak: nowy komponent + API route `/api/health` + section na homepage
+**KFA meeting**: 6 czerwca. Single-product proposal (Inbox Killer only). Jeśli user chce przygotować 1-pager na spotkanie — to jest scoped task.
 
-### D) Exploration
-- `/api` discovery endpoints — czy `llms.txt` i `ecosystem.json` są discoverable przez AI agents?
-- SEO: sitemap dynamiczny, structured data JSON-LD
+## Opcje następnej sesji (user wybiera)
+
+### A) Build — Inbox Killer MVP (Tylko jeśli 72h test = ✅)
+- Make/Zapier workflow template + jadzia-core LLM classification
+- Simple dashboard: hot leads queue, noise score, daily summary
+- Landing page: `services.flexgrafik.nl` — hero + product + pricing + CTA
+
+### B) Content — Portfolio log entries
+- Nowe MDX w `src/content/log/` (auto-timeline, auto-sitemap, auto-JSON-LD)
+- Tematy: Agent OS Phase 5 details, jadzia-core Stage 2, Flex-VCMS scan ritual
+
+### C) Infrastructure — Portfolio polish
+- KF-2: Live Health Strip (wymaga publicznych VPS endpoints)
+- OG image per `/dna/[pillar]` i `/labs/[slug]`
+- LinkedIn CTA w Footer/Hero (gdy URL odblokowany)
+
+### D) Strategy — KFA meeting prep
+- 1-pager visual proposal dla Inbox Killer
+- Demo-ready workflow (test na własnym inboxie)
+- Objection handling script (price, trust, product fit)
 
 ## Start command
 
 ```bash
-# verify state
-git status && npm run build
+git status; npm run build
 ```
 
 ## Zasada
 
-`npm run build` musi przejść przed każdym commitem. TypeScript strict, zero `any`.
+`npm run build` przed każdym commitem. TypeScript strict, zero `any`.

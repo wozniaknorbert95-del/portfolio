@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/labs`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/dna`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/log`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.8 },
+    { url: `${baseUrl}/log/feed.json`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.4 },
+    { url: `${baseUrl}/log/feed.xml`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.4 },
   ];
 
   const labsRoutes: MetadataRoute.Sitemap = projects.map((p) => ({

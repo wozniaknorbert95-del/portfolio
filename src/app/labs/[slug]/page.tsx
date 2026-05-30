@@ -18,7 +18,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return {};
-  return { title: `${project.name} — Labs — FlexGrafik` };
+
+  return {
+    title: `${project.name} — Labs — FlexGrafik`,
+    description: project.description,
+    authors: [{ name: 'Norbert Wozniak' }],
+    openGraph: {
+      title: `${project.name} | Labs | FlexGrafik`,
+      description: project.description,
+      type: 'article',
+    },
+  };
 }
 
 export default async function ProjectDetailPage({
@@ -29,6 +39,28 @@ export default async function ProjectDetailPage({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) notFound();
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: project.name,
+    description: project.description,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Any',
+    author: {
+      '@type': 'Person',
+      name: 'Norbert Wozniak',
+      url: 'https://portfolio.flexgrafik.nl',
+    },
+    url: `https://portfolio.flexgrafik.nl/labs/${project.slug}`,
+    codeRepository: project.repo,
+    programmingLanguage: project.stack,
+    softwareVersion: project.status === 'production' ? '1.0' : '0.1',
+    datePublished: project.last_handoff,
+    ...(project.status === 'production'
+      ? { applicationSubCategory: 'Production System' }
+      : { applicationSubCategory: 'In Development' }),
+  };
 
   const statusColor = getStatusColor(project.status);
   const statusLabel = getStatusLabel(project.status);
@@ -352,6 +384,11 @@ export default async function ProjectDetailPage({
     >
       &larr; Back to Ecosystem
     </Link>
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
   </article>
 );
 }

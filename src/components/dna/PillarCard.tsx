@@ -14,43 +14,31 @@ export default function PillarCard({ pillar }: { pillar: Pillar }) {
   return (
     <Link
       href={`/dna/${pillar.slug}`}
-      className="group flex flex-col gap-4 p-6 rounded-xl border no-underline transition-all"
-      style={{
-        background: 'var(--color-bg-surface)',
-        borderColor: 'var(--color-border)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'var(--color-accent)';
-        e.currentTarget.style.transform = 'translateY(-2px)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'var(--color-border)';
-        e.currentTarget.style.transform = 'translateY(0)';
-      }}
+      className="group flex flex-col gap-4 p-6 rounded-xl border no-underline bg-[var(--color-bg-surface)] border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all duration-150"
     >
       <div className="flex items-center gap-3">
         {Icon && (
-          <span className="shrink-0" style={{ color: 'var(--color-accent)' }}>
+          <span className="shrink-0 text-[var(--color-accent)]">
             <Icon size={32} />
           </span>
         )}
-        <h2 className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+        <h2 className="text-lg font-semibold text-[var(--color-text-primary)]">
           {pillar.title}
         </h2>
       </div>
-      <p className="text-sm italic" style={{ color: 'var(--color-text-muted)' }}>
+      <p className="text-sm italic text-[var(--color-text-muted)]">
         {pillar.tagline}
       </p>
-      <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+      <p className="text-sm text-[var(--color-text-secondary)]">
         {pillar.description.length > 120
           ? `${pillar.description.slice(0, 120)}...`
           : pillar.description}
       </p>
-      <div className="flex items-center justify-between mt-auto pt-3" style={{ borderTop: '1px solid var(--color-border)' }}>
-        <span className="font-mono text-xs" style={{ color: 'var(--color-text-muted)' }}>
+      <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--color-border)]">
+        <span className="font-mono text-xs text-[var(--color-text-muted)]">
           {pillar.keyPoints.length} principles
         </span>
-        <span className="font-mono text-xs transition-colors" style={{ color: 'var(--color-accent)' }}>
+        <span className="font-mono text-xs text-[var(--color-accent)] transition-colors">
           Explore →
         </span>
       </div>

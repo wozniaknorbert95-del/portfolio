@@ -166,31 +166,33 @@ export default function MethodologyGraph() {
   const memoEdges = useMemo(() => edges, []);
 
   return (
-    <div style={{ height: 680, width: '100%' }}>
-      <ReactFlow
-        nodes={memoNodes}
-        edges={memoEdges}
-        nodeTypes={nodeTypes}
-        fitView
-        fitViewOptions={{ padding: 0.15 }}
-        proOptions={{ hideAttribution: true }}
-        nodesDraggable={false}
-        nodesConnectable={false}
-        elementsSelectable={false}
-        defaultEdgeOptions={{
-          style: { stroke: '#58a6ff40', strokeWidth: 1.5 },
-          labelStyle: {
-            fontFamily: 'var(--font-mono)',
-            fontSize: 9,
-            fill: 'var(--color-text-secondary)',
-          },
-          labelBgStyle: { fill: 'var(--color-bg)' },
-          labelBgPadding: [4, 2] as [number, number],
-          labelBgBorderRadius: 2,
-        }}
-      >
-        <Background color="var(--color-border)" gap={28} size={1} />
-      </ReactFlow>
+    <div className="overflow-x-auto">
+      <div className="min-w-[600px]" style={{ height: 680 }}>
+        <ReactFlow
+          nodes={memoNodes}
+          edges={memoEdges}
+          nodeTypes={nodeTypes}
+          fitView
+          fitViewOptions={{ padding: 0.15 }}
+          proOptions={{ hideAttribution: true }}
+          nodesDraggable={false}
+          nodesConnectable={false}
+          elementsSelectable={false}
+          defaultEdgeOptions={{
+            style: { stroke: '#58a6ff40', strokeWidth: 1.5 },
+            labelStyle: {
+              fontFamily: 'var(--font-mono)',
+              fontSize: 9,
+              fill: 'var(--color-text-secondary)',
+            },
+            labelBgStyle: { fill: 'var(--color-bg)' },
+            labelBgPadding: [4, 2] as [number, number],
+            labelBgBorderRadius: 2,
+          }}
+        >
+          <Background color="var(--color-border)" gap={28} size={1} />
+        </ReactFlow>
+      </div>
     </div>
   );
 }

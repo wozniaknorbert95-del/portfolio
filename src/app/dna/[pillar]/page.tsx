@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { BrainCircuit, ShieldCheck, FileCode, Database, Zap, type LucideIcon } from 'lucide-react';
+import type { Metadata } from 'next';
 import { pillars, getPillarBySlug, type Pillar } from '@/data/methodology';
 import BackLink from '@/components/dna/BackLink';
 
@@ -9,6 +10,25 @@ const iconMap: Record<string, LucideIcon> = {
 
 export function generateStaticParams() {
   return pillars.map((p) => ({ pillar: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ pillar: string }>;
+}): Promise<Metadata> {
+  const { pillar: slug } = await params;
+  const pillar = getPillarBySlug(slug);
+  if (!pillar) return {};
+
+  return {
+    title: pillar.title,
+    description: pillar.description,
+    openGraph: {
+      title: `${pillar.title} | Engineering DNA | FlexGrafik`,
+      description: pillar.tagline,
+    },
+  };
 }
 
 function PillarIcon({ iconName, size }: { iconName: string; size: number }) {
@@ -28,6 +48,29 @@ export default async function PillarPage({ params }: { params: Promise<{ pillar:
   if (!pillar) {
     notFound();
   }
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: pillar.title,
+    description: pillar.description,
+    author: {
+      '@type': 'Person',
+      name: 'Norbert Wozniak',
+      url: 'https://portfolio.flexgrafik.nl',
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Norbert Wozniak',
+      url: 'https://portfolio.flexgrafik.nl',
+    },
+    about: {
+      '@type': 'Thing',
+      name: 'AI Systems Architecture',
+    },
+    genre: 'Engineering Methodology',
+    inLanguage: 'en-US',
+  };
 
   return (
     <div
@@ -143,6 +186,11 @@ export default async function PillarPage({ params }: { params: Promise<{ pillar:
       </section>
 
       <BackLink href="/dna" label="Back to DNA" />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
   );
 }

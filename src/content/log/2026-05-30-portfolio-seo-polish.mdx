@@ -1,0 +1,41 @@
+---
+title: "Portfolio SEO + Polish — Deployed"
+date: "2026-05-30"
+project: "portfolio"
+type: "FEAT"
+summary: "Dynamic JSON-LD structured data across all 45 pages. Reusable skeleton UI system. PillarCard hover refactor. MethodologyGraph mobile overflow fix."
+---
+
+## What happened
+
+Two back-to-back sessions on the portfolio, both deployed in a single commit.
+
+### Session D: SEO Foundations
+
+The portfolio had solid metadata at root but was missing structured data and dynamic metadata on every page type. Fixed across the board:
+
+- **Sitemap** — added `/log/feed.json` and `/log/feed.xml` to `sitemap.ts` for search engine discoverability
+- **WebSite schema** — `SearchAction` with Sitelinks Searchbox pointing to `/log?q={search_term_string}`
+- **TechArticle JSON-LD** — auto-generated on every log entry page (headline, datePublished, author, about→SoftwareApplication, articleSection)
+- **TechArticle JSON-LD** — auto-generated on every DNA pillar page (headline, description, genre: Engineering Methodology)
+- **SoftwareApplication JSON-LD** — auto-generated on every labs project page (name, description, codeRepository, programmingLanguage, softwareVersion, applicationSubCategory)
+- **Per-page metadata** — title, description, OG tags, canonical URLs on all dynamic routes (`log/[slug]`, `dna/[pillar]`, `labs/[slug]`)
+
+### Session A: UX Polish
+
+Three targeted UX fixes in the DNA section:
+
+- **Skeleton UI system** — reusable `Skeleton`, `SkeletonText`, `SkeletonCard` components in `src/components/ui/` with CSS shimmer animation. Respects `prefers-reduced-motion` via existing media query in globals.css.
+- **PillarCard hover** — refactored from inline `onMouseEnter/Leave` + `style.transform` to Tailwind utility classes: `hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all duration-150`. All inline color styles migrated to `text-[var(--color-...)]` arbitrary values.
+- **MethodologyGraph mobile** — wrapped ReactFlow in `overflow-x-auto` + `min-w-[600px]` to prevent page-level horizontal overflow on viewports < 600px. Graph scrolls internally instead of breaking layout.
+
+## Evidence
+
+- `npm run build` — 45/45 pages, TypeScript clean, zero errors
+- Commit `d5459cd` pushed to master, Vercel auto-deployed
+- Sitemap live: [portfolio.flexgrafik.nl/sitemap.xml](https://portfolio.flexgrafik.nl/sitemap.xml)
+- Log entry with TechArticle JSON-LD verified: [portfolio.flexgrafik.nl/log/2026-05-29-agent-os-phase5](https://portfolio.flexgrafik.nl/log/2026-05-29-agent-os-phase5)
+
+## Next step
+
+Content: continue operating journal with upcoming project milestones. Infrastructure: KF-2 health strip when VPS endpoints become publicly reachable.

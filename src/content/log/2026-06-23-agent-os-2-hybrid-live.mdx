@@ -1,0 +1,46 @@
+---
+title: "Agent OS 2.0 — Hybrid Control Plane LIVE"
+date: "2026-06-23"
+project: "agent-os"
+type: "HANDOFF"
+summary: "PostgreSQL + VPS 24/7 + Mission Control tabs + hybrid runner contract. Portfolio honesty aligned."
+---
+
+## What happened
+
+Agent OS moved from Phase 5 MVP to **2.0 hybrid architecture**:
+
+- **Control plane 24/7** on FlexGrafik VPS (`os-api.flexgrafik.nl`, `os.flexgrafik.nl`)
+- **PostgreSQL** task store (not SQLite on prod)
+- **Bearer auth** on API mutations; Basic Auth on UI
+- **Mission Control** audit refactor: Tailwind, components, tabs (Zadania / Kolejka / Historia / Koszty)
+- **Local Runner** contract: `WAITING_RUNNER` → claim → complete on dev PC
+- **Truth audit** R0: docs/portfolio drift corrected
+
+## Evidence
+
+- Prod health: `https://os-api.flexgrafik.nl/api/v1/health` → healthy
+- POST `/api/v1/tasks` without Bearer → 401
+- `pytest tests/integration/test_runner_protocol.py` — 24/24 PASS
+- `tools/verify_reject_flow.py` — HITL PASS
+- `tools/hybrid_runner_smoke.py` — heartbeat + queue (HTTPS prod)
+- `tools/hybrid_runner_e2e.py --in-process` — full hybrid + HITL reject
+- Demo script: `agent-os/docs/demo/OPERATOR-DEMO.md`
+- UI schematic: `/images/agent-os-mission-control.svg` (live capture: `https://os.flexgrafik.nl`)
+
+## Honesty labels (PRODUCT.md)
+
+| Capability | Status |
+|------------|--------|
+| Task queue + HITL | LIVE |
+| Hybrid routing | LIVE |
+| Cost in UI | PARTIAL LIVE (per-task + summary endpoint) |
+| Langfuse tracing | PLANNED (P1) |
+| Code execution on VPS | NOT OFFERED (local PC only) |
+
+## Next step
+
+- Deploy UI tabs to VPS (`Deploy-AgentOS-VPS.ps1`)
+- `e2e_smoke.py` when OpenRouter credits available
+- Live screenshot from `https://os.flexgrafik.nl` (replace schematic SVG)
+- Langfuse P1 (optional)

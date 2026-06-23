@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated": "2026-05-29",
+  "generated": "2026-06-23",
   "owner": {
     "name": "Norbert Wozniak",
     "alias": "FlexGrafik",
@@ -28,12 +28,12 @@
       "name": "Agent OS",
       "slug": "agent-os",
       "role": "Multi-agent orchestration backend",
-      "description": "LangGraph workflow: Planner → Coder (OpenCode) → Tester → Reviewer (HITL) → Summarizer. API Model Gateway with token budget and persistent SQLite state.",
+      "description": "LangGraph workflow: Planner → Coder → Tester → Reviewer (HITL) → Summarizer. Hybrid VPS + local runner. PostgreSQL on prod.",
       "status": "production",
-      "stack": ["Python 3.13", "FastAPI", "LangGraph", "SQLite", "Uvicorn"],
+      "stack": ["Python 3.13", "FastAPI", "LangGraph", "PostgreSQL", "Uvicorn"],
       "stack_layer": "orchestration",
       "port": 8080,
-      "health_url": null,
+      "health_url": "https://os-api.flexgrafik.nl/api/v1/health",
       "repo": "agent-os",
       "key_files": [
         "agent-os/SESSION-ANCHOR.md",
@@ -42,8 +42,8 @@
         "agent-os/tools/e2e_smoke.py"
       ],
       "guardrails": ["HITL gate before deploy", "Token budget enforcement", "Manual deploy only (Zasada 11)"],
-      "highlights": ["Full LangGraph pipeline", "POST /api/v1/llm gateway", "E2E tests pass (Faza 5 DONE)"],
-      "last_handoff": "2026-05-23"
+      "highlights": ["Hybrid VPS + local runner", "HTTPS API 24/7", "HITL Mission Control", "E2E verify_reject_flow PASS"],
+      "last_handoff": "2026-06-23"
     },
     {
       "id": "agent-os-ui",
@@ -55,12 +55,12 @@
       "stack": ["Next.js 16.2.6", "React 19.2.4", "TypeScript"],
       "stack_layer": "ui",
       "port": 3000,
-      "health_url": null,
+      "health_url": "https://os.flexgrafik.nl/api/health",
       "repo": "agent-os-ui",
       "key_files": ["agent-os-ui/AGENTS.md", "agent-os-ui/src/app/"],
       "guardrails": ["Manual deploy only", "Proxy to agent-os backend"],
-      "highlights": ["Mission Control MVP", "Health + task create UI"],
-      "last_handoff": "2026-05-23"
+      "highlights": ["Mission Control tabs", "Cost summary panel", "Tailwind UI", "Basic Auth + Bearer proxy"],
+      "last_handoff": "2026-06-23"
     },
     {
       "id": "zzpackage",

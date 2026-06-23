@@ -27,8 +27,8 @@ Interactive ecosystem map of 8 production/staging projects.
 Each project: architecture, stack, guardrails, handoff timeline.
 
 Projects:
-- /labs/agent-os — LangGraph multi-agent backend (Python, FastAPI, SQLite)
-- /labs/agent-os-ui — Mission Control dashboard (Next.js 16, React 19)
+- /labs/agent-os — LangGraph orchestration backend (Python, FastAPI, PostgreSQL on prod)
+- /labs/agent-os-ui — Mission Control dashboard (Next.js, tabs: tasks/queue/history/costs)
 - /labs/zzpackage — WooCommerce wizard + SSoT pipeline (WordPress, GHA)
 - /labs/app-flexgrafik — Canvas advergame / lead magnet (React 19, Vite)
 - /labs/flex-vcms — Ecosystem orchestrator + LLM gateway (Node.js)

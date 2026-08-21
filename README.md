@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Norbert Woźniak — AI Systems Architect
 
-## Getting Started
+I build **operating systems for small businesses** — quotes, orders, inbox and reporting — rebuilt as managed systems. AI at build speed, engineering discipline for delivery.
 
-First, run the development server:
+**Quietforge** → [quietforge.flexgrafik.nl](https://quietforge.flexgrafik.nl)
+Systems that give back time. Scan → scope → build → you approve → handover. Nothing goes live without the owner's approval.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Repositories
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Repository | What it is |
+|---|---|
+| [`dsaas-quietforge`](https://github.com/wozniaknorbert95-del/dsaas-quietforge) | Quietforge public site — proof-first, honest hours counter |
+| [`zlotaskrzynia`](https://github.com/wozniaknorbert95-del/zlotaskrzynia) | KOKPIT — internal battlecard + team cockpit (private) |
+| [`dsaas-platform-main`](https://github.com/wozniaknorbert95-del/dsaas-platform-main) | DSaaS platform core (private, dry-run) |
+| [`jadzia`](https://github.com/wozniaknorbert95-del/jadzia) | Automated deploys with `test_mode` + rollback |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Principles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Honest proof** — the public hours counter starts at zero on purpose; numbers move only after a client verifies them.
+- **Approval gates** — the system proposes, the owner clicks. Nothing customer-facing goes live without it.
+- **Replaceable by design** — your repository from day one.
 
-## Learn More
+## Connect
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [quietforge.flexgrafik.nl](https://quietforge.flexgrafik.nl)
+- [LinkedIn](https://www.linkedin.com/in/flexgrafik-quietforge)

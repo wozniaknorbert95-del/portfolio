@@ -1,26 +1,45 @@
-# Norbert Woźniak — AI Systems Architect
+# QuietForge public proof candidate
 
-I build **operating systems for small businesses** — quotes, orders, inbox and reporting — rebuilt as managed systems. AI at build speed, engineering discipline for delivery.
+This repository is a **PUBLIC PROOF CANDIDATE - HOLD** for Norbert Wozniak,
+Conversion Systems Architect.
 
-**Quietforge** → [quietforge.flexgrafik.nl](https://quietforge.flexgrafik.nl)
-Systems that give back time. Scan → scope → build → you approve → handover. Nothing goes live without the owner's approval.
+The current codebase contains portfolio experiments and historical implementation
+material. It is not yet a canonical open-source product and is not pinned from the
+QuietForge profile until the README, security, IP and evidence review is complete.
 
-## Repositories
+## Start here
 
-| Repository | What it is |
+- [QuietForge](https://quietforge.flexgrafik.nl/)
+- [Builder's Lab](https://quietforge.flexgrafik.nl/lab/)
+- [Proof boundary](https://quietforge.flexgrafik.nl/proof/)
+
+## Intended role
+
+If this repository passes review, it may become a sanitized technical proof index for:
+
+- governed workflow design;
+- human approval and delivery gates;
+- company knowledge and operating maps;
+- documented build experiments.
+
+Until then, repository visibility does not mean production status, client delivery,
+open-source licensing or permission to reuse QuietForge framework/IP.
+
+## Proof status
+
+| Field | Status |
 |---|---|
-| [`dsaas-quietforge`](https://github.com/wozniaknorbert95-del/dsaas-quietforge) | Quietforge public site — proof-first, honest hours counter |
-| [`zlotaskrzynia`](https://github.com/wozniaknorbert95-del/zlotaskrzynia) | KOKPIT — internal battlecard + team cockpit (private) |
-| [`dsaas-platform-main`](https://github.com/wozniaknorbert95-del/dsaas-platform-main) | DSaaS platform core (private, dry-run) |
-| [`jadzia`](https://github.com/wozniaknorbert95-del/jadzia) | Automated deploys with `test_mode` + rollback |
+| Repository role | PUBLIC PROOF CANDIDATE |
+| Readiness | HOLD |
+| Proof tier | PLANNED |
+| External client outcome | None claimed |
+| Licence | No open-source licence decision yet |
+| Last review | 2026-09-06 |
 
-## Principles
+## Review gate before pinning
 
-- **Honest proof** — the public hours counter starts at zero on purpose; numbers move only after a client verifies them.
-- **Approval gates** — the system proposes, the owner clicks. Nothing customer-facing goes live without it.
-- **Replaceable by design** — your repository from day one.
-
-## Connect
-
-- [quietforge.flexgrafik.nl](https://quietforge.flexgrafik.nl)
-- [LinkedIn](https://www.linkedin.com/in/flexgrafik-quietforge)
+- full history secret scan and rotation review;
+- removal or sanitization of internal hosts, tenant context, old offers and private references;
+- reproducible build or deliberate sanitized walkthrough;
+- `SECURITY.md`, `CODEOWNERS` and ownership/IP boundary;
+- proof claims mapped to `PROVEN`, `DEMO` or `PLANNED` evidence.
